@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Support Geckoman by donating and exploring his next project and GitHub account.">
-    <meta name="keywords" content="Geckoman, donation, Gecko Project, GitHub, NowPayments">
+    <meta name="keywords" content="Geckoman, donation, Gecko Project, GitHub, NowPayments, Bitcoin Price">
     <meta name="author" content="Satoshi Nakamoto Now Geckoman">
     <title>Support Geckoman</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             background-color: black;
@@ -55,38 +56,41 @@
             background-color: #007acc;
             color: white;
         }
+        .ticker {
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
+            max-width: 300px;
+            font-size: 1.2rem;
+        }
+        .ticker i {
+            margin-right: 10px;
+            color: #f7931a; /* Bitcoin orange */
+        }
         footer {
             margin-top: 20px;
             font-size: 0.9rem;
             color: lightgray;
             text-align: center;
         }
-        /* Responsive design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            p {
-                font-size: 0.95rem;
-            }
-            .button {
-                font-size: 0.9rem;
-                padding: 8px 16px;
-            }
-        }
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-            p {
-                font-size: 0.9rem;
-            }
-            .button {
-                font-size: 0.85rem;
-                padding: 6px 12px;
-            }
-        }
     </style>
+    <script>
+        async function fetchBitcoinPrice() {
+            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+            const data = await response.json();
+            const price = data.bitcoin.usd.toFixed(2);
+            document.getElementById('btc-price').textContent = `$${price}`;
+        }
+
+        // Update the price every 30 seconds
+        setInterval(fetchBitcoinPrice, 30000);
+        window.onload = fetchBitcoinPrice;
+    </script>
 </head>
 <body>
     <div class="container">
@@ -103,6 +107,10 @@
             Check out the GitHub account: 
             <a href="https://github.com/GeckoProjectMN/GeckoProject" target="_blank">https://github.com/GeckoProjectMN/GeckoProject</a>
         </p>
+        <div class="ticker">
+            <i class="fab fa-bitcoin"></i>
+            <span id="btc-price">Loading...</span> Success
+        </div>
         <a class="button" href="https://nowpayments.io/donation/geckoman" target="_blank">Donate Now</a>
         <a class="button" href="https://gecko.mn" target="_blank">Explore Next Project</a>
         <a class="button" href="https://github.com/GeckoProjectMN/GeckoProject" target="_blank">Visit GitHub</a>
