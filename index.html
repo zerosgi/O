@@ -58,9 +58,6 @@
         }
         .price-section {
             margin: 40px auto;
-            padding: 20px 0;
-            border-top: 1px solid white;
-            border-bottom: 1px solid white;
             text-align: center;
             font-size: 1.5rem;
         }
@@ -69,7 +66,7 @@
             color: #f7931a; /* Bitcoin orange */
         }
         .success-text {
-            margin-top: 10px;
+            margin-top: 20px;
             font-size: 1.2rem;
             color: lightgreen;
             text-align: center;
@@ -124,8 +121,7 @@
             }
         }
 
-        // Update the price every 10 seconds
-        setInterval(fetchBitcoinPrice, 10000);
+        // Update Bitcoin price on page load
         window.onload = fetchBitcoinPrice;
     </script>
 </head>
@@ -152,7 +148,7 @@
         <i class="fab fa-bitcoin"></i>
         <span id="btc-price">Loading...</span>
     </div>
-    <div class="success-text">Success</div>
+    <div class="success-text">Bitcoin is a success. Good luck, everyone!</div>
     <footer>
         Signed, <strong>Satoshi Nakamoto Now Geckoman</strong>
     </footer>
